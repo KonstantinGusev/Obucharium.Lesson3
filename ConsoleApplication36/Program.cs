@@ -61,31 +61,48 @@ namespace ConsoleReference
 
                 switch (selection)
                 {
+                    
                     case "p":
+                        
                         do
                         {
-                            Console.ForegroundColor = ConsoleColor.Blue;
-                            Console.WriteLine("Введите имя абонента:");
-                            Console.ForegroundColor = ConsoleColor.DarkYellow;
-                            name = Console.ReadLine();
-                            Console.ForegroundColor = ConsoleColor.Blue;
-                            Console.WriteLine("Введите номер абонента:");
-                            Console.ForegroundColor = ConsoleColor.DarkYellow;
-                            number = Convert.ToInt32(Console.ReadLine());
-                            Console.ForegroundColor = ConsoleColor.Blue;
-                            Console.WriteLine("Введите адрес абонента:");
-                            Console.ForegroundColor = ConsoleColor.DarkYellow;
-                            adress = Console.ReadLine();
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            mylist.Add(new Spravochnik(number, adress, name));
+                            Console.WriteLine("\nВведите количество абонентов которое вы собираетесь ввести\n");
+                            int a = int.Parse(Console.ReadLine());
+                            for (int i=0; i < a; i++)
+                            {
+                                Console.ForegroundColor = ConsoleColor.White;
 
+                                Console.WriteLine("\nВведите имя абонента:\n");
+
+                                name = Console.ReadLine();
+
+                                Console.WriteLine("\nВведите номер абонента:\n");
+
+                                number = Convert.ToInt32(Console.ReadLine());
+
+                                Console.WriteLine("\nВведите адрес абонента:\n");
+
+                                adress = Console.ReadLine();
+
+                                mylist.Add(new Spravochnik(number, adress, name));
+
+                                foreach (object g in mylist)
+                                {
+                                    Console.WriteLine("\n"+g);
+                                }
+                            }
+                            
+
+                            Console.ForegroundColor = ConsoleColor.Red;
                             Console.WriteLine(@"Выберете дальнейшее действие
 Найти c возможностью удаления
 1:      по номеру 
 2:      по адресу
 3:      по имени
-4:      Вернуться в главное меню");
+4:      добавить еще абонентов
+5:      Вернуться в главное меню");
                             command = Console.ReadLine();
+                            
                             switch (command)
                             {
                                 case "1":
@@ -103,6 +120,7 @@ namespace ConsoleReference
                                             case "y":
                                                 mylist.RemoveAll(new Predicate<Spravochnik>(spp.Findnumber));
                                                 break;
+                                                
                                         }
 
                                     }
@@ -113,25 +131,55 @@ namespace ConsoleReference
                                     break;
 
                                 case "2":
-                                    Console.WriteLine("Введите адресс абонента для поиска:");
+                                    Console.WriteLine("Введите адрес абонента для поиска:");
                                     string adress1 = Console.ReadLine();
                                     Spravochnik spp1 = new Spravochnik(0, adress1, "");
                                     Spravochnik sp1 = mylist.Find(new Predicate<Spravochnik>(spp1.Findadrees));
+
                                     if (sp1 != null)
                                     {
                                         Console.WriteLine(sp1);
+                                        Console.WriteLine("Хотите его удалить?y/n");
+                                        
+                                        string remove = Console.ReadLine();
+
+                                        switch (remove)
+                                        {
+                                            case "y":
+                                                mylist.RemoveAll(new Predicate<Spravochnik>(spp1.Findnumber));
+                                                break;
+                                        }
+                                    }
+                                    else {
+                                        Console.WriteLine("Абонент с таким адресом не найден:");
+                                            }
+                                    break;
+                                   
+
+                                case "3":
+                                    Console.WriteLine("Введите имя для поиска:");
+                                    string names = Console.ReadLine();
+                                    Console.WriteLine(names);
+                                    Spravochnik sppp = new Spravochnik(0, "", names);
+                                    mylist.FindAll(new Predicate<Spravochnik>(sppp.Findname)).ForEach(delegate (Spravochnik s) { Console.WriteLine(s); });
+                                    if (sppp != null)
+                                    {
+                                        Console.WriteLine(sppp);
+                                        Console.WriteLine("Хотите его удалить?y/n");
+
+                                        string remove = Console.ReadLine();
+
+                                        switch (remove)
+                                        {
+                                            case "y":
+                                                mylist.RemoveAll(new Predicate<Spravochnik>(sppp.Findnumber));
+                                                break;
+                                        }
                                     }
                                     else
                                     {
                                         Console.WriteLine("Абонент с таким адресом не найден:");
                                     }
-                                    break;
-
-                                case "3":
-                                    Console.WriteLine("Введите имя для поиска:");
-                                    string names = Console.ReadLine();
-                                    Spravochnik sppp = new Spravochnik(0, "", names);
-                                    mylist.FindAll(new Predicate<Spravochnik>(sppp.Findname)).ForEach(delegate (Spravochnik s) { Console.WriteLine(s); });
                                     break;
 
                                 default:
@@ -140,7 +188,7 @@ namespace ConsoleReference
                             }
 
                         }
-                        while (command != "4");
+                        while (command != "5");
                         break;
 
                     case "e":
