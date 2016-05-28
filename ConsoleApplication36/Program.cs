@@ -75,15 +75,16 @@ namespace ConsoleReference
                                 Console.WriteLine("\nВведите имя абонента:\n");
 
                                 name = Console.ReadLine();
+                                name = name.ToUpper();
 
                                 Console.WriteLine("\nВведите номер абонента:\n");
-
+                                
                                 number = Convert.ToInt32(Console.ReadLine());
 
                                 Console.WriteLine("\nВведите адрес абонента:\n");
 
                                 adress = Console.ReadLine();
-
+                                adress = adress.ToUpper();
                                 mylist.Add(new Spravochnik(number, adress, name));
 
                                 foreach (object g in mylist)
@@ -133,6 +134,7 @@ namespace ConsoleReference
                                 case "2":
                                     Console.WriteLine("Введите адрес абонента для поиска:");
                                     string adress1 = Console.ReadLine();
+                                    adress1 = adress1.ToUpper();
                                     Spravochnik spp1 = new Spravochnik(0, adress1, "");
                                     Spravochnik sp1 = mylist.Find(new Predicate<Spravochnik>(spp1.Findadrees));
 
@@ -159,6 +161,7 @@ namespace ConsoleReference
                                 case "3":
                                     Console.WriteLine("Введите имя для поиска:");
                                     string names = Console.ReadLine();
+                                    names = names.ToUpper();
                                     Console.WriteLine(names);
                                     Spravochnik sppp = new Spravochnik(0, "", names);
                                     mylist.FindAll(new Predicate<Spravochnik>(sppp.Findname)).ForEach(delegate (Spravochnik s) { Console.WriteLine(s); });
