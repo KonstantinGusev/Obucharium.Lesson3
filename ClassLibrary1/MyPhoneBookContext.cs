@@ -7,11 +7,11 @@ using System.Data.Entity;
 
 namespace MyPhoneBook.Core
 {
-    class MyPhoneBookContext
+    class MyPhoneBookContext:DbContext
     {
-        public List<Person> People { get; set; }
+        public DbSet<Person> People { get; set; }
 
-        public List<Category> Categories { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
     }
 }
