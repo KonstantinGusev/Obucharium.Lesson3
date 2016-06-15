@@ -12,6 +12,6 @@ namespace MyPhoneBook.Core
 
         public string Name { get; set; }
 
-        ICollection<Person> People { get; set; }
+        public ICollection<Person> People { get; set; }
     }
 }

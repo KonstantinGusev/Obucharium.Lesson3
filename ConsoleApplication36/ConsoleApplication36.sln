@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication36", "Con
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPhoneBook.Core", "..\ClassLibrary1\MyPhoneBook.Core.csproj", "{B6FD7267-246D-4653-B165-9679925DC148}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPhoneBook.Web", "..\WebApplication1\MyPhoneBook.Web.csproj", "{9B015649-60B0-43BA-89AF-3135D7DA7700}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B6FD7267-246D-4653-B165-9679925DC148}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6FD7267-246D-4653-B165-9679925DC148}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6FD7267-246D-4653-B165-9679925DC148}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B015649-60B0-43BA-89AF-3135D7DA7700}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B015649-60B0-43BA-89AF-3135D7DA7700}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B015649-60B0-43BA-89AF-3135D7DA7700}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B015649-60B0-43BA-89AF-3135D7DA7700}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
