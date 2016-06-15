@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyPhoneBook.Core
 {
-    class Person
+    public class Person
     {
         public int Id { get; set; }
 

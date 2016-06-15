@@ -7,7 +7,7 @@ using System.Data.Entity;
 
 namespace MyPhoneBook.Core
 {
-    class MyPhoneBookContext:DbContext
+   public class MyPhoneBookContext:DbContext
     {
         public DbSet<Person> People { get; set; }
 
