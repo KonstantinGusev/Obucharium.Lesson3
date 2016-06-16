@@ -17,6 +17,13 @@ namespace MyPhoneBook
             db.SaveChanges();
         }
 
+        public void AddCategory(Category category)
+        {
+            var db = new MyPhoneBookContext();
+            db.Categories.Add(category);
+            db.SaveChanges();
+        }
+
         public void UpdatePerson(int id, Person person)
         {
             var db = new MyPhoneBookContext();
@@ -26,6 +33,25 @@ namespace MyPhoneBook
             db.SaveChanges();
         }
 
+        public void UpdateCategory(int id, Category category)
+        {
+            var db = new MyPhoneBookContext();
+            var ocategory = db.Categories.Single(c => c.Id == id);
+            ocategory.Name = category.Name;
+            
+            db.SaveChanges();
+        }
+
+        public void DeleteCategory(int categoryId)
+        {
+            var db = new MyPhoneBookContext();
+            var category = db.Categories.SingleOrDefault(c => c.Id == categoryId);
+            if (category != null)
+            {
+                db.Categories.Remove(category);
+                db.SaveChanges();
+            }
+        }
         public void DeletePerson(Person person)
         {
             DeletePerson(person.Id);
@@ -46,6 +72,12 @@ namespace MyPhoneBook
         {
             var db = new MyPhoneBookContext();
             return db.People;
+        }
+        public Category GetCategory(int categoryId)
+        {
+            var db = new MyPhoneBookContext();
+            var q = db.Categories.Single(p => p.Id == categoryId);
+            return q;
         }
 
         public Person GetPerson(int id)
